@@ -10,6 +10,16 @@
 *.userosscache
 *.sln.docstates
 
+*.swp
+*.*~
+project.lock.json
+.DS_Store
+*.pyc
+nupkg/
+
+# Rider
+.idea
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
@@ -276,6 +286,9 @@ FakesAssemblies/
 # Node.js Tools for Visual Studio
 .ntvs_analysis.dat
 node_modules/
+
+node_modules
+.eslintcache
 
 # Visual Studio 6 build log
 *.plg
