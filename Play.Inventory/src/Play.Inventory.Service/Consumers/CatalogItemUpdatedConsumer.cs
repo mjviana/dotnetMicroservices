@@ -1,5 +1,5 @@
 using MassTransit;
-using Play.Catalag.Contracts;
+using Play.Catalog.Contracts;
 using Play.Common;
 using Play.Inventory.Service.Entities;
 

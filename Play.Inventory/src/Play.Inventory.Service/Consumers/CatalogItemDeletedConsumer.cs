@@ -1,5 +1,5 @@
 using MassTransit;
-using Play.Catalag.Contracts;
+using Play.Catalog.Contracts;
 using Play.Common;
 using Play.Inventory.Service.Entities;
 
@@ -18,7 +18,7 @@ namespace Play.Inventory.Service.Consumers
         {
             var message = context.Message;
 
-            var item = await _repository.GetAsync(message.Itemid);
+            var item = await _repository.GetAsync(message.ItemId);
 
             if (item == null)
                 return;
