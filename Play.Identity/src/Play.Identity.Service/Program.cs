@@ -1,8 +1,11 @@
+using MassTransit;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
+using Play.Common.MassTransit;
 using Play.Common.Settings;
 using Play.Identity.Service.Entities;
+using Play.Identity.Service.Exceptions;
 using Play.Identity.Service.HostedServcices;
 using Play.Identity.Service.Settings;
 
@@ -24,6 +27,14 @@ builder.Services.Configure<IdentitySettings>(identitySettingsConfiguration)
         mongoDbSettings.ConnectionString,
         serviceSettings.ServiceName
     );
+
+builder.Services.AddMassTransitWithRabbitMq(retyConfigurator =>
+{
+    retyConfigurator.Interval(3, TimeSpan.FromSeconds(5));
+    retyConfigurator.Ignore(typeof(UnknownUserException));
+    retyConfigurator.Ignore(typeof(InsufficientFundsException));
+}
+);
 
 builder.Services.AddIdentityServer(options =>
 {
